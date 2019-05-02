@@ -38,6 +38,9 @@
             this.label4 = new System.Windows.Forms.Label();
             this.btnCalc = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtOperand1
@@ -46,6 +49,7 @@
             this.txtOperand1.Name = "txtOperand1";
             this.txtOperand1.Size = new System.Drawing.Size(100, 20);
             this.txtOperand1.TabIndex = 0;
+            this.txtOperand1.TextChanged += new System.EventHandler(this.txtOperand1_TextChanged);
             // 
             // txtOperator
             // 
@@ -54,6 +58,7 @@
             this.txtOperator.Name = "txtOperator";
             this.txtOperator.Size = new System.Drawing.Size(28, 20);
             this.txtOperator.TabIndex = 1;
+            this.txtOperator.TextChanged += new System.EventHandler(this.txtOperator_TextChanged);
             // 
             // txtOperand2
             // 
@@ -120,6 +125,7 @@
             // 
             // btnExit
             // 
+            this.btnExit.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnExit.Location = new System.Drawing.Point(173, 280);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(75, 23);
@@ -127,13 +133,43 @@
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(302, 95);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(28, 13);
+            this.label5.TabIndex = 10;
+            this.label5.Text = "       ";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(305, 130);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(22, 13);
+            this.label6.TabIndex = 11;
+            this.label6.Text = "     ";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(308, 171);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(28, 13);
+            this.label7.TabIndex = 12;
+            this.label7.Text = "       ";
+            // 
             // FrmSimpleCalc
             // 
             this.AcceptButton = this.btnCalc;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnExit;
-            this.ClientSize = new System.Drawing.Size(382, 328);
+            this.ClientSize = new System.Drawing.Size(432, 328);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnCalc);
             this.Controls.Add(this.label4);
@@ -163,6 +199,9 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnCalc;
         private System.Windows.Forms.Button btnExit;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
     }
 }
 

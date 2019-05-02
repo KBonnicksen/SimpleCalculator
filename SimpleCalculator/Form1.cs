@@ -41,10 +41,11 @@ namespace SimpleCalculator
             return false;
         }
 
-        private bool isPresent(Textbox box)
+        private bool isPresent(TextBox box)
         {
-            if (string.IsNullOrWhiteSpace(box.Text))
+            if (String.IsNullOrEmpty(box.Text))
             {
+                MessageBox.Show("Please enter a number");
                 return false;
             }
             return true;
@@ -53,15 +54,25 @@ namespace SimpleCalculator
 
         private bool isDecimal(TextBox box)
         {
-            try
+            if (isPresent(box))
             {
-                Convert.ToDecimal(box.Text);
-                return true;
+                try 
+                {
+                    decimal dec = Convert.ToDecimal(box.Text);
+                    if(dec >= 0 && dec < 1000000)
+                    {
+                        return true;
+                    }
+                    MessageBox.Show("Please enter a value from 0 up to 1000000 (inclusive)");
+                    return false;
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Please enter a number");
+                    return false;
+                }
             }
-            catch (Exception)
-            {
-                return false;
-            }
+            return false;
         }
 
         private bool IsOperator(TextBox box)
@@ -71,6 +82,7 @@ namespace SimpleCalculator
             {
                 return true;
             }
+            MessageBox.Show("Please enter a valid operator of *, /, +. or -");
             return false;
         }
 
@@ -79,20 +91,38 @@ namespace SimpleCalculator
             switch (operator1)
             {
                 case "+":
-                    return operand1 + operand2;
+                    return Math.Round(operand1 + operand2, 4);
                 case "-":
-                    return operand1 - operand2;
+                    return Math.Round(operand1 - operand2, 4); 
                 case "*":
-                    return operand1 * operand2;
+                    return Math.Round(operand1 * operand2, 4); 
                 case "/":
-                    return operand1 / operand2;
+                    try
+                    {
+                        return Math.Round(operand1 / operand2, 4);
+                    }
+                    catch (DivideByZeroException)
+                    {
+                        MessageBox.Show("Cannot divide by 0: result is undefined");
+                    }
+                    break;
             }
             return 0;
         }
 
         private void textBox3_TextChanged(object sender, EventArgs e)
         {
+            txtResult.Text = "";
+        }
 
+        private void txtOperator_TextChanged(object sender, EventArgs e)
+        {
+            textBox3_TextChanged(sender, e);
+        }
+
+        private void txtOperand1_TextChanged(object sender, EventArgs e)
+        {
+            textBox3_TextChanged(sender, e);
         }
     }
 }
