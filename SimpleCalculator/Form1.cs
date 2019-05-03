@@ -45,7 +45,7 @@ namespace SimpleCalculator
         {
             if (String.IsNullOrEmpty(box.Text))
             {
-                MessageBox.Show("Please enter a number");
+                MessageBox.Show("Please enter a number for " + box.AccessibleName);
                 return false;
             }
             return true;
@@ -63,12 +63,12 @@ namespace SimpleCalculator
                     {
                         return true;
                     }
-                    MessageBox.Show("Please enter a value from 0 up to 1000000 (inclusive)");
+                    MessageBox.Show("Please enter a value from 0 up to 1000000 (inclusive) for " + box.AccessibleName);
                     return false;
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("Please enter a number");
+                    MessageBox.Show("Please enter a number for " + box.AccessibleName);
                     return false;
                 }
             }
@@ -124,5 +124,11 @@ namespace SimpleCalculator
         {
             textBox3_TextChanged(sender, e);
         }
+
+        private void BtnExit_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
     }
 }
